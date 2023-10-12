@@ -37,18 +37,5 @@ namespace ESCMB.Infraestructure.Registrations
 
             return services;
         }
-
-        private static IServiceCollection AddMongoDbRepositories(this IServiceCollection services, IConfiguration configuration)
-        {
-            ConventionRegistry.Register("Camel Case", new ConventionPack { new CamelCaseElementNameConvention() }, _ => true);
-
-            Repositories.Mongo.StoreDbContext db = new Repositories.Mongo.StoreDbContext(configuration.GetConnectionString("MongoConnection"));
-            services.AddSingleton(typeof(Repositories.Mongo.StoreDbContext), db);
-
-            /* MongoDb Repositories */
-            services.AddTransient<Application.Repositories.Mongo.IDummyEntityRepository, Repositories.Mongo.DummyEntityRepository>();
-
-            return services;
-        }
     }
 }
