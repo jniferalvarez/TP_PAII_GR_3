@@ -18,6 +18,8 @@ namespace ESCMB.Application.UseCases.Client.Commands.CreateClient
 
         public async Task<string> Handle(CreateClientCommand request, CancellationToken cancellationToken)
         {
+            //TODO: Falta logica busqueda de cliente por CuitCuil para validar si ya esta dado de alta
+
             Domain.Entities.Client client = new Domain.Entities.Client(request.Apellido, request.CuitCuil, request.Email, request.Nombre);
 
             if (!client.IsValid)
