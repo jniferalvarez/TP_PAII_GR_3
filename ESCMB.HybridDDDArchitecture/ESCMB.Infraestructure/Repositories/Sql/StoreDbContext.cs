@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ESCMB.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ESCMB.Infraestructure.Repositories.Sql
 {
@@ -8,7 +9,8 @@ namespace ESCMB.Infraestructure.Repositories.Sql
     /// </summary>
     internal sealed class StoreDbContext : DbContext
     {
-        public DbSet<Domain.Entities.DummyEntity> DummyEntity { get; set; }
+        //public DbSet<Domain.Entities.DummyEntity> DummyEntity { get; set; }
+        public DbSet<Client> ClientEntity { get; set; }
 
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
         {
@@ -16,10 +18,15 @@ namespace ESCMB.Infraestructure.Repositories.Sql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Domain.Entities.DummyEntity>().ToTable("DummyEntity");
+            modelBuilder.Entity<Client>().ToTable("cliente");
 
-            modelBuilder.Entity<Domain.Entities.DummyEntity>().Ignore(type => type.ValidationErrors);
-            modelBuilder.Entity<Domain.Entities.DummyEntity>().Ignore(type => type.IsValid);
+            modelBuilder.Entity<Client>().Ignore(type => type.ValidationErrors);
+            modelBuilder.Entity<Client>().Ignore(type => type.IsValid);
+
+            //modelBuilder.Entity<Domain.Entities.DummyEntity>().ToTable("DummyEntity");
+
+            //modelBuilder.Entity<Domain.Entities.DummyEntity>().Ignore(type => type.ValidationErrors);
+            //modelBuilder.Entity<Domain.Entities.DummyEntity>().Ignore(type => type.IsValid);
         }
     }
 }

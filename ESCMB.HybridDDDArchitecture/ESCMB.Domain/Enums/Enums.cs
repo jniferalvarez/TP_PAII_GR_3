@@ -15,5 +15,14 @@
             value2,
             value3,
         }
+
+        public enum ClientStatus
+        {
+            Pendiente, 
+            Confirmado,
+            Habilitado, 
+            Bloqueado,
+            Cancelado
+        }
     }
 }

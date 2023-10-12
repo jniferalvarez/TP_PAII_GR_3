@@ -1,9 +1,9 @@
 ﻿using Common.Infraestructure.Adapters.EventBus.RabbitMq;
+using ESCMB.Application.Repositories.Sql;
+using ESCMB.Infraestructure.Repositories.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Bson.Serialization.Conventions;
-using System.Data;
 
 namespace ESCMB.Infraestructure.Registrations
 {
@@ -16,8 +16,6 @@ namespace ESCMB.Infraestructure.Registrations
         {
             /* Database Context */
             services.AddSqlServerRepositories(configuration);
-            //Habilitar para trabajar con MongoDb
-            //services.AddMongoDbRepositories(configuration);
 
             /* EventBus */
             services.AddEventBus();
@@ -34,6 +32,7 @@ namespace ESCMB.Infraestructure.Registrations
 
             /* Sql Repositories */
             services.AddTransient<Application.Repositories.Sql.IDummyEntityRepository, Repositories.Sql.DummyEntityRepository>();
+            services.AddTransient<IClientRepository, ClientRepository>();
 
             return services;
         }

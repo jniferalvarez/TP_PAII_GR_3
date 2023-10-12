@@ -10,7 +10,6 @@
     <Folder Include="DomainServices\" />
     <Folder Include="Aggregators\" />
     <Folder Include="Contracts\" />
-    <Folder Include="Helpers\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
 
