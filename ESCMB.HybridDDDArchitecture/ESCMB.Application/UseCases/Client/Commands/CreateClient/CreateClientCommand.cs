@@ -8,7 +8,7 @@ namespace ESCMB.Application.UseCases.Client.Commands.CreateClient
         [Required]
         public string Apellido { get; set; }
         [Required]
-        public int CuitCuil { get; set; }
+        public long CuitCuil { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]
