@@ -4,6 +4,8 @@ using ESCMB.Application.UseCases.Client.Commands.CreateClient;
 using ESCMB.Application.UseCases.Client.Commands.Deleteclient;
 using ESCMB.Application.UseCases.Client.Commands.UpdateClient;
 using ESCMB.Application.UseCases.Client.Queries.GetAllClient;
+using ESCMB.Application.UseCases.Client.Queries.GetClientById;
+using ESCMB.Application.UseCases.DummyEntity.Queries.GetDummyEntityBy;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESCMB.API.Controllers
@@ -55,6 +57,17 @@ namespace ESCMB.API.Controllers
 
             return Ok(client);
         }
+        [HttpGet("api/v1/[Controller]/{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            if (int.Parse(id) <= 0) return BadRequest();
+            {
+                var entity = await _commandQueryBus.Send(new GetClientByIdQuery { Id = id });
+
+                return Ok(entity);
+            }
+
+            }
 
     }
 }

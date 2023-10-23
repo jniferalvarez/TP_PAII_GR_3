@@ -25,7 +25,6 @@
     <Folder Include="Integrations\Events\" />
     <Folder Include="Integrations\Handlers\" />
     <Folder Include="UseCases\Client\Notifications\" />
-    <Folder Include="UseCases\Client\Queries\GetClientById\" />
     <Folder Include="UseCases\DummyEntity\Notifications\" />
   </ItemGroup>
 

@@ -9,11 +9,11 @@ namespace ESCMB.Application.DataTransferObjects
     public class ClientDto
     {
         public string Id { get; set; }
-        //public string Apellido { get; set; }
-        //public decimal CuitCuil { get;set; }
-        //public string Email { get; set; }
-        //public string Nombre { get; set; }
-        //public string Status { get; set; }
+        public string Apellido { get; set; }
+        public decimal CuitCuil { get;set; }
+        public string Email { get; set; }
+        public string Nombre { get; set; }
+        public string Status { get; set; }
 
 
 
