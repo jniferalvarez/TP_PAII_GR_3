@@ -2,12 +2,6 @@
 using ESCMB.Application.Common;
 using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.Repositories.Sql;
-using ESCMB.Application.UseCases.DummyEntity.Queries.GetAllDummyEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ESCMB.Application.UseCases.Client.Queries.GetAllClient
 {

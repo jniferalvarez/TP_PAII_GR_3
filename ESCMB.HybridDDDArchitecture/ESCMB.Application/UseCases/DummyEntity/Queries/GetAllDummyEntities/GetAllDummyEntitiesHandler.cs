@@ -2,6 +2,7 @@
 using ESCMB.Application.Common;
 using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.Repositories.Sql;
+using ESCMB.Application.UseCases.Client.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ESCMB.Application.UseCases.DummyEntity.Queries.GetAllDummyEntities
 {
-    internal sealed class GetAllDummyEntitiesHandler : IRequestQueryHandler<GetAllClientQuery, QueryResult<DummyEntityDto>>
+    internal sealed class GetAllDummyEntitiesHandler : IRequestQueryHandler<GetAllDummyEntitiesQuery, QueryResult<DummyEntityDto>>
     {
         private readonly IDummyEntityRepository _context;
 
@@ -19,7 +20,7 @@ namespace ESCMB.Application.UseCases.DummyEntity.Queries.GetAllDummyEntities
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<QueryResult<DummyEntityDto>> Handle(GetAllClientQuery request, CancellationToken cancellationToken)
+        public async Task<QueryResult<DummyEntityDto>> Handle(GetAllDummyEntitiesQuery request, CancellationToken cancellationToken)
         {
             IList<Domain.Entities.DummyEntity> entities = await _context.FindAllAsync();
 

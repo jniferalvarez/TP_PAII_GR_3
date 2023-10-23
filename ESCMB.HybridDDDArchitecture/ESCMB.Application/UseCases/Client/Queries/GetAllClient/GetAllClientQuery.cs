@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ESCMB.Application.UseCases.Client.Queries.GetAllClient
 {
-    internal class GetAllClientQuery : QueryRequestCommand<QueryResult<ClientDto>>
+    public class GetAllClientQuery : QueryRequestCommand<QueryResult<ClientDto>>
     {
 
     }

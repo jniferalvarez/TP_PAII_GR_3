@@ -1,12 +1,9 @@
 ﻿using Common.Application.Commands;
+using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.UseCases.Client.Commands.CreateClient;
 using ESCMB.Application.UseCases.Client.Commands.Deleteclient;
 using ESCMB.Application.UseCases.Client.Commands.UpdateClient;
-using ESCMB.Application.UseCases.DummyEntity.Commands.CreateDummyEntity;
-using ESCMB.Application.UseCases.DummyEntity.Commands.DeleteDummyEntity;
-using ESCMB.Application.UseCases.DummyEntity.Commands.UpdateDummyEntity;
-using ESCMB.Application.UseCases.DummyEntity.Queries.GetAllDummyEntities;
-using Microsoft.AspNetCore.Http;
+using ESCMB.Application.UseCases.Client.Queries.GetAllClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ESCMB.API.Controllers
@@ -50,10 +47,11 @@ namespace ESCMB.API.Controllers
 
             return NoContent();
         }
+
         [HttpGet("api/v1/[Controller]")]
         public async Task<IActionResult> GetAll(int pageIndex = 1, int pageSize = 10)
         {
-            QueryResult<Application.DataTransferObjects.ClientDto>? client = await _commandQueryBus.Send(new GetAllClientQuery() { PageIndex = pageIndex, PageSize = pageSize });
+            QueryResult<ClientDto>? client = await _commandQueryBus.Send(new GetAllClientQuery() { PageIndex = pageIndex, PageSize = pageSize });
 
             return Ok(client);
         }
