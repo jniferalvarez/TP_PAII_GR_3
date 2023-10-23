@@ -1,9 +1,12 @@
 ﻿using Common.Application.Commands;
+using static ESCMB.Domain.Enums;
 
 namespace ESCMB.Application.DomainEvents
 {
     public class ClientCreated : DomainEvent
     {
-        //TODO: Faltan definir las propiedades que desean compartir a traves del evento de dominio
+        public string email { get; set; }
+        public string? CuitCuil { get; set; }
+        public ClientStatus ClientStatus { get; set; }
     }
 }

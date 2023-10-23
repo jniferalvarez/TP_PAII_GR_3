@@ -53,7 +53,7 @@ namespace ESCMB.API
             app.UseAuthentication();
             app.UseAuthorization();
 
-            UseEventBus(app);
+            //UseEventBus(app);
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

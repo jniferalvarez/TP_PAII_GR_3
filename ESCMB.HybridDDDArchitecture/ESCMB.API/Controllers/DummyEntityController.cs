@@ -27,7 +27,7 @@ namespace ESCMB.API.Controllers
         [HttpGet("api/v1/[Controller]")]
         public async Task<IActionResult> GetAll(int pageIndex = 1, int pageSize = 10)
         {
-            var entities = await _commandQueryBus.Send(new GetAllDummyEntitiesQuery() { PageIndex = pageIndex, PageSize = pageSize });
+            var entities = await _commandQueryBus.Send(new GetAllClientQuery() { PageIndex = pageIndex, PageSize = pageSize });
 
             return Ok(entities);
         }
