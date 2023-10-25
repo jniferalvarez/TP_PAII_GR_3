@@ -17,6 +17,7 @@ namespace ESCMB.Application.Mappings
             CreateMap<DummyEntity, DummyEntityDto>().ReverseMap();
 
             CreateMap<Client, ClientCreated>().ReverseMap();
+            CreateMap<Client, ClientDto>().ReverseMap();
         }
     }
 }

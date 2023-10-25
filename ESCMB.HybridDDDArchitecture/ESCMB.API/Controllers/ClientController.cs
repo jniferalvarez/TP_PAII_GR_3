@@ -57,17 +57,18 @@ namespace ESCMB.API.Controllers
 
             return Ok(client);
         }
+
         [HttpGet("api/v1/[Controller]/{id}")]
         public async Task<IActionResult> GetById(string id)
         {
-            if (int.Parse(id) <= 0) return BadRequest();
-            {
-                var entity = await _commandQueryBus.Send(new GetClientByIdQuery { Id = id });
+            if (string.IsNullOrWhiteSpace(id)) return BadRequest();
+            
+            var entity = await _commandQueryBus.Send(new GetClientByIdQuery { Id = id });
 
                 return Ok(entity);
-            }
 
-            }
+
+        }
 
     }
 }

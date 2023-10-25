@@ -4,6 +4,7 @@ using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.Exceptions;
 using ESCMB.Application.Repositories.Sql;
 using ESCMB.Application.UseCases.DummyEntity.Queries.GetDummyEntityBy;
+using ESCMB.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

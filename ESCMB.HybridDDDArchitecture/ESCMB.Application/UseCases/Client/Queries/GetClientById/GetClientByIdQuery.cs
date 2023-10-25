@@ -14,6 +14,7 @@ namespace ESCMB.Application.UseCases.Client.Queries.GetClientById
         public GetClientByIdQuery()
         {
         }
+
         [Required]
         public string Id { get; set; }
     }
