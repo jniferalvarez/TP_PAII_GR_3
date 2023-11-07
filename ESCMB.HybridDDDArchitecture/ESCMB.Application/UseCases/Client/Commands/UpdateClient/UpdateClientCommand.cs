@@ -11,6 +11,8 @@ namespace ESCMB.Application.UseCases.Client.Commands.UpdateClient
     public class UpdateClientCommand : IRequestCommand
     {
         [Required]
+        public string Id { get; set; }
+        [Required]
         public string Apellido { get;  set; }
         [Required]
         public long CuitCuil { get; set; }
