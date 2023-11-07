@@ -1,3 +1,5 @@
+using ESCMB.Domain.MailAdapter;
+
 namespace ESCMB.API
 {
     public class Program
@@ -8,8 +10,9 @@ namespace ESCMB.API
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-        }
+                    }
         public static IHostBuilder CreateHostBuilder(string[] args) => Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(config => { config.UseStartup<Startup>(); });
+
     }
 }
