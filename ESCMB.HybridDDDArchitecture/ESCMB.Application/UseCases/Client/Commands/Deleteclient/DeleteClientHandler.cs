@@ -32,7 +32,7 @@ namespace ESCMB.Application.UseCases.Client.Commands.Deleteclient
             {
                 _clientRepository.Remove(request.Id);
 
-                _eventPublisher.Publish(new ClientDelete(request.Id), cancellationToken);
+                _eventPublisher.Publish(new ClientDeleted(request.Id), cancellationToken);
 
                 return Unit.Task;
             }

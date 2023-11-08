@@ -3,6 +3,7 @@ using ESCMB.Application.DataTransferObjects;
 using ESCMB.Application.UseCases.Client.Commands.CreateClient;
 using ESCMB.Application.UseCases.Client.Commands.Deleteclient;
 using ESCMB.Application.UseCases.Client.Commands.UpdateClient;
+using ESCMB.Application.UseCases.Client.Commands.UpdateClientStatus;
 using ESCMB.Application.UseCases.Client.Queries.GetAllClient;
 using ESCMB.Application.UseCases.Client.Queries.GetClientById;
 using ESCMB.Application.UseCases.DummyEntity.Queries.GetDummyEntityBy;
@@ -71,35 +72,15 @@ namespace ESCMB.API.Controllers
 
         }
 
-        [HttpPut("api/v1/confirmar")]
-        public async Task<IActionResult> ConfirmarCorreoAsync([FromBody] string token)
+        [HttpPut("api/v1/[Controller]/{id}/confirm")]
+        public async Task<IActionResult> ConfirmarCorreoAsync(string id)
         {
+            if(string.IsNullOrWhiteSpace(id)) return BadRequest();
+
             // Valida el token y encuentra el cliente asociado
-            var entity = await _commandQueryBus.Send(new GetClientByIdQuery { Id = token });
+            await _commandQueryBus.Send(new UpdateClientStatusCommand { Id = id });
 
-
-            if (entity == null)
-            {
-                return BadRequest("ID inválido o está rengo");
-            }
-
-            // Actualiza la información del cliente
-            entity.Status = ClientStatus.Confirmado.ToString();
-
-            // Guarda los cambios en la base de datos
-            await _commandQueryBus.Send(new UpdateClientCommand
-            {
-                Id = entity.Id,
-                Apellido = entity.Apellido,
-                CuitCuil = (long)entity.CuitCuil,
-                //Email = entity.Email,
-                //Nombre = entity.Nombre,
-                //Status = entity.Status
-            });
-
-            return Ok("Correo confirmado con éxito");
+            return NoContent();
         }
-
-
     }
 }

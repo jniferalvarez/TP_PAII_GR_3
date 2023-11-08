@@ -25,7 +25,7 @@ namespace ESCMB.Application.UseCases.Client.Commands.UpdateClient
         }
         public async Task<Unit> Handle(UpdateClientCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Client entity = await _clientRepository.FindOneAsync(request.CuitCuil);
+            Domain.Entities.Client entity = await _clientRepository.FindOneAsync(request.Id);
 
             if (entity is null) throw new EntityDoesNotExistException();
 
@@ -37,7 +37,7 @@ namespace ESCMB.Application.UseCases.Client.Commands.UpdateClient
             {
                 _clientRepository.Update(entity);
 
-                await _eventPublisher.Publish(entity.To<ClientUpdate>(), cancellationToken);
+                await _eventPublisher.Publish(entity.To<ClientUpdated>(), cancellationToken);
 
                 return Unit.Value;
             }

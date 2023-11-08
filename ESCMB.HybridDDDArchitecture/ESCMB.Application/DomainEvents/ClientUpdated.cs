@@ -7,15 +7,9 @@ using System.Threading.Tasks;
 
 namespace ESCMB.Application.DomainEvents
 {
-    internal sealed class ClientDelete: DomainEvent
+    internal class ClientUpdated : DomainEvent
     {
-        public string Id { get; set; }
 
-        public ClientDelete(string id)
-        {
-            this.Id = id;
-
-        }
 
     }
 }
