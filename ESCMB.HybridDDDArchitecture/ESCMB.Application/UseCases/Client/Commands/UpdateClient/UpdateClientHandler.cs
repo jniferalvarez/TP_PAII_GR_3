@@ -30,8 +30,9 @@ namespace ESCMB.Application.UseCases.Client.Commands.UpdateClient
             if (entity is null) throw new EntityDoesNotExistException();
 
             entity.SetLastName(request.Apellido);
-            entity.SetName(request.Nombre);
-            entity.SetEmail(request.Email);
+            //entity.SetName(request.Nombre);
+            //entity.SetEmail(request.Email);
+            //entity.SetStatus(request.Status);
             try
             {
                 _clientRepository.Update(entity);

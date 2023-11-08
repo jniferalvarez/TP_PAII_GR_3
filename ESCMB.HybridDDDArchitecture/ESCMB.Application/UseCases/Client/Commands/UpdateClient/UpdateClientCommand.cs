@@ -13,15 +13,15 @@ namespace ESCMB.Application.UseCases.Client.Commands.UpdateClient
         [Required]
         public string Id { get; set; }
         [Required]
-        public string Apellido { get;  set; }
+        public string Apellido { get; set; }
         [Required]
         public long CuitCuil { get; set; }
-        [Required]
-        public string Email { get; set; }
-        [Required]
-        public string Nombre { get;set; }
-        [Required]
-        public string Status { get;set; }
+        //[Required]
+        //public string Email { get; set; }
+        //[Required]
+        //public string Nombre { get; set; }
+        //[Required]
+        //public string Status { get;set; }
 
         public UpdateClientCommand()
         {

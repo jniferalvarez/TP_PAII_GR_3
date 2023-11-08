@@ -35,10 +35,12 @@ namespace ESCMB.Application.UseCases.Client.Commands.CreateClient
             string id = await _clientRepository.AddOneAsync(client).ConfigureAwait(false);
 
             await _eventPublisher.Publish(client.To<ClientCreated>(), cancellationToken).ConfigureAwait(false);
+            string _linkButton = $"http://localhost:4200/api/v1/confirmar?token={id}";
+
             // Inicio de Envío  mail
             /* Inicio de la parametrización del mail */
             string _fullName = $"{client.Nombre + " " + client.Apellido}";
-            string _linkButton = $"http://localhost:4200/put/{id}";
+           // string _linkButton = $"http://localhost:4200/put/{id}";
             string _subject = $"{client.Nombre}, desde PayMaster queremos confirmar tu registro";
             string _body = $"<body>\r\n    <h1>¡Hola {_fullName}!</h1>\r\n    <p>Confirmá tu correo para continuar con el registro.</p>\r\n    <a href=\"{_linkButton}\" style=\"background-color: #007BFF; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;\">Confirmar</a>\r\n</body>";
             /* Fin de la parametrización del mail */

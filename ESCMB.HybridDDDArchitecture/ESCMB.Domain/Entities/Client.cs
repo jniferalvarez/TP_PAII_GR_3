@@ -45,5 +45,9 @@ namespace ESCMB.Domain.Entities
         {
             Email = value ?? throw new ArgumentNullException(nameof(value));
         }
+        public void SetStatus (string? value )
+        {
+            Status = value ?? throw new ArgumentNullException(nameof(value));
+        }
     }
 }

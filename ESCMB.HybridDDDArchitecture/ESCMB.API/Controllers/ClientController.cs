@@ -7,6 +7,7 @@ using ESCMB.Application.UseCases.Client.Queries.GetAllClient;
 using ESCMB.Application.UseCases.Client.Queries.GetClientById;
 using ESCMB.Application.UseCases.DummyEntity.Queries.GetDummyEntityBy;
 using Microsoft.AspNetCore.Mvc;
+using static ESCMB.Domain.Enums;
 
 namespace ESCMB.API.Controllers
 {
@@ -69,6 +70,36 @@ namespace ESCMB.API.Controllers
 
 
         }
+
+        [HttpPut("api/v1/confirmar")]
+        public async Task<IActionResult> ConfirmarCorreoAsync([FromBody] string token)
+        {
+            // Valida el token y encuentra el cliente asociado
+            var entity = await _commandQueryBus.Send(new GetClientByIdQuery { Id = token });
+
+
+            if (entity == null)
+            {
+                return BadRequest("ID inválido o está rengo");
+            }
+
+            // Actualiza la información del cliente
+            entity.Status = ClientStatus.Confirmado.ToString();
+
+            // Guarda los cambios en la base de datos
+            await _commandQueryBus.Send(new UpdateClientCommand
+            {
+                Id = entity.Id,
+                Apellido = entity.Apellido,
+                CuitCuil = (long)entity.CuitCuil,
+                //Email = entity.Email,
+                //Nombre = entity.Nombre,
+                //Status = entity.Status
+            });
+
+            return Ok("Correo confirmado con éxito");
+        }
+
 
     }
 }
